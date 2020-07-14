@@ -1,6 +1,6 @@
 package com.keepcoding.springboot.dao;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -11,11 +11,14 @@ import com.keepcoding.springboot.model.Hero;
 
 @Service
 public class HeroDaoService {
+	
+	private static List<Hero> heroes = new ArrayList<>();
 
-	private static List<Hero> heroes = Arrays.asList(
-			new Hero(1, "Peter Parker", "Spiderman", new Date()),
-			new Hero(2, "Tony Stark", "Ironman", new Date()),
-			new Hero(3, "Bruce Banner", "Hulk", new Date()));
+	static {
+		heroes.add(new Hero(1, "Peter Parker", "Spiderman", new Date()));
+		heroes.add(new Hero(2, "Tony Stark", "Ironman", new Date()));
+		heroes.add(new Hero(3, "Bruce Banner", "Hulk", new Date()));
+	}
 	
 	private static int counter = 3;
 	
