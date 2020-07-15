@@ -1,11 +1,14 @@
 package com.keepcoding.springboot.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -20,6 +23,9 @@ public class Hero {
 	private String heroName;
 	@Past
 	private Date birthDate;
+	
+	@OneToMany(orphanRemoval = true, mappedBy = "hero", fetch = FetchType.LAZY)
+	private List<Power> powers;
 	
 	public Hero() {
 		super();
