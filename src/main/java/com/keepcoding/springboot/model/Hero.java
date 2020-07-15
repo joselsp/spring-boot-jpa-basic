@@ -2,11 +2,16 @@ package com.keepcoding.springboot.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
 public class Hero {
 
 	private int id;
+	@Size(min = 3)
 	private String name;
 	private String heroName;
+	@Past
 	private Date birthDate;
 	
 	public Hero() {

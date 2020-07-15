@@ -3,6 +3,8 @@ package com.keepcoding.springboot.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -49,9 +51,9 @@ public class HeroController {
 			throw new HeroNotFoundException("El heroe con id " + id + " no existe");
 		}
 	}
-
+	
 	@PostMapping("/hero")
-	public ResponseEntity<Object> addHero(@RequestBody Hero hero) {
+	public ResponseEntity<Object> addHero(@RequestBody @Valid Hero hero) {
 		Hero addedHero =  heroDaoService.addHero(hero);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
