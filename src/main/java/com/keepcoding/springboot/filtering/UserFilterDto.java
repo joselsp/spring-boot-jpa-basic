@@ -1,9 +1,12 @@
 package com.keepcoding.springboot.filtering;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class UserFilterDto {
 
 	private int id;
 	private String name;
+	@JsonIgnore
 	private String password;
 	
 	public UserFilterDto() {
