@@ -8,5 +8,5 @@ public interface HeroService {
 	List<Hero> findAll();
 	Hero findHeroById(int id);
 	Hero addHero(Hero hero);
-	boolean deleteHero(int id);
+	void deleteHero(int id);
 }

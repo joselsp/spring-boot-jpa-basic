@@ -5,11 +5,13 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.keepcoding.springboot.model.Hero;
 
 @Service
+@Qualifier("dao")
 public class HeroDaoService implements HeroService {
 	
 	private static List<Hero> heroes = new ArrayList<>();
@@ -46,16 +48,14 @@ public class HeroDaoService implements HeroService {
 	}
 	
 	@Override
-	public boolean deleteHero(int id) {
+	public void deleteHero(int id) {
 		Iterator<Hero> heroIterator = heroes.iterator();
 		Hero heroToRemove = null;
 		do {
 			heroToRemove = heroIterator.next();
 			if (heroToRemove.getId() == id) {
 				heroIterator.remove();
-				return true;
 			}
 		}while(heroIterator.hasNext());
-		return false;
 	}
 }
