@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,9 +40,16 @@ public class HeroController {
 		return result;
 	}
 	
-	// POST 
-	// Devolver estado 201: Created
-	// Devolver uri del nuevo recurso creado
+	@DeleteMapping("/hero/{id}")
+	public void deleteHeroById(@PathVariable int id) {
+		
+		boolean result = heroDaoService.deleteHero(id);
+		
+		if (!result) {
+			throw new HeroNotFoundException("El heroe con id " + id + " no existe");
+		}
+	}
+
 	@PostMapping("/hero")
 	public ResponseEntity<Object> addHero(@RequestBody Hero hero) {
 		Hero addedHero =  heroDaoService.addHero(hero);
@@ -50,5 +58,5 @@ public class HeroController {
 				.buildAndExpand(addedHero.getId()).toUri();
 		
 		return ResponseEntity.created(location).build();
-	}
+	}	
 }
