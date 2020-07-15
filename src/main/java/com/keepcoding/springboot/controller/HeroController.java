@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.keepcoding.springboot.dao.HeroDaoService;
+import com.keepcoding.springboot.exceptions.HeroNotFoundException;
 import com.keepcoding.springboot.model.Hero;
-import com.keepcoding.springboot.model.HeroNotFoundException;
 
 @RestController
 public class HeroController {
