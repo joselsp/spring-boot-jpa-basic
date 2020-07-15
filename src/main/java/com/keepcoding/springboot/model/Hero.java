@@ -70,6 +70,12 @@ public class Hero {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	
-	
+
+	public List<Power> getPowers() {
+		return powers;
+	}
+
+	public void setPowers(List<Power> powers) {
+		this.powers = powers;
+	}
 }

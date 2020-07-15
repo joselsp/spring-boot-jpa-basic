@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.keepcoding.springboot.model.Hero;
+import com.keepcoding.springboot.model.Power;
 
 @Service
 @Qualifier("dao")
@@ -57,5 +58,24 @@ public class HeroDaoService implements HeroService {
 				heroIterator.remove();
 			}
 		}while(heroIterator.hasNext());
+	}
+
+	@Override
+	public List<Power> findAllPowersByHeroId(int heroId) {
+		return null;
+	}
+
+	@Override
+	public Power findPowerById(int heroId, int powerId) {
+		return null;
+	}
+
+	@Override
+	public Power addPower(int heroId, Power power) {
+		return null;
+	}
+
+	@Override
+	public void deletePower(int heroId, int powerId) {
 	}
 }

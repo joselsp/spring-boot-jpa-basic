@@ -13,7 +13,7 @@ public class Power {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String nombre;
+	private String name;
 	private String description;
 	
 	@ManyToOne(optional = false, fetch = FetchType.LAZY, targetEntity = Hero.class)
@@ -23,10 +23,10 @@ public class Power {
 		super();
 	}
 
-	public Power(int id, String nombre, String description) {
+	public Power(int id, String name, String description) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
+		this.name = name;
 		this.description = description;
 	}
 
@@ -39,11 +39,11 @@ public class Power {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {
