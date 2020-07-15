@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.keepcoding.springboot.dao.HeroDaoService;
 import com.keepcoding.springboot.model.Hero;
+import com.keepcoding.springboot.model.HeroNotFoundException;
 
 @RestController
 public class HeroController {
@@ -28,7 +29,14 @@ public class HeroController {
 	
 	@GetMapping("/hero/{id}")
 	public Hero findHeroById(@PathVariable int id) {
-		return heroDaoService.findHeroById(id);
+		
+		Hero result = heroDaoService.findHeroById(id);
+		
+		if (result == null) {
+			throw new HeroNotFoundException("El heroe con id " + id + " no existe");
+		}
+		
+		return result;
 	}
 	
 	// POST 
