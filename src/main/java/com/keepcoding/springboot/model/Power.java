@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Power {
 
@@ -16,6 +18,7 @@ public class Power {
 	private String name;
 	private String description;
 	
+	@JsonIgnore
 	@ManyToOne(optional = false, fetch = FetchType.LAZY, targetEntity = Hero.class)
 	private Hero hero;
 	
@@ -38,11 +41,11 @@ public class Power {
 		this.id = id;
 	}
 
-	public String getNombre() {
+	public String getName() {
 		return name;
 	}
 
-	public void setNombre(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
