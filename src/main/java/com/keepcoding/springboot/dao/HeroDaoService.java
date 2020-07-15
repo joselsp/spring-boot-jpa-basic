@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.keepcoding.springboot.model.Hero;
 
 @Service
-public class HeroDaoService {
+public class HeroDaoService implements HeroService {
 	
 	private static List<Hero> heroes = new ArrayList<>();
 
@@ -22,12 +22,12 @@ public class HeroDaoService {
 	
 	private static int counter = 3;
 	
-	// Obtener todos los heroes
+	@Override
 	public List<Hero> findAll() {
 		return heroes;
 	}
 	
-	// Obtener un heroe en concreto
+	@Override
 	public Hero findHeroById(int id) {
 		Hero result = null;
 		for (Hero hero: heroes) {
@@ -38,14 +38,14 @@ public class HeroDaoService {
 		return result;
 	}
 	
-	// Añadir un heroe
+	@Override
 	public Hero addHero(Hero hero) {
 		hero.setId(++counter);
 		heroes.add(hero);
 		return hero;
 	}
 	
-	// Borrar un heroe
+	@Override
 	public boolean deleteHero(int id) {
 		Iterator<Hero> heroIterator = heroes.iterator();
 		Hero heroToRemove = null;
